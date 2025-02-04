@@ -1,0 +1,24 @@
+site_name: fractrade.xyz Documentation
+site_description: "Documentation for the fractrade.xyz platform."
+theme:
+  name: terminal
+  palette: 'dark'
+  custom_dir: docs/overrides  # Add custom overrides
+  features:
+    - content.code.copy      # Add copy button to code blocks
+  
+extra_css:
+  - stylesheets/extra.css    # Add custom CSS
+
+docs_dir: docs  # Location of the documentation files
+nav:
+  - Home: index.md
+  - Core Architecture: architecture.md
+  - Components:
+      - Client: components/client.md
+      - Strategy: components/strategy.md
+      - Publisher: components/publisher.md
+  - Examples: 
+      - Monkey Publisher: examples/monkey_publisher.md
+  - Whitepaper: whitepaper.md
+  - FAQ: faq.md

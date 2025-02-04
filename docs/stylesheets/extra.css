@@ -1,0 +1,64 @@
+/* Increase content width */
+.container {
+    max-width: 1200px !important;  /* Adjust this value as needed */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Improve readability */
+.md-content {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Better heading spacing */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+/* Add some spacing between sections */
+section {
+    margin-bottom: 2em;
+}
+
+/* Make code blocks more readable */
+pre {
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 4px;
+}
+
+/* Improve table readability */
+table {
+    width: 100%;
+    margin: 1em 0;
+}
+
+/* Better list spacing */
+ul, ol {
+    padding-left: 2em;
+    margin: 1em 0;
+}
+
+/* Add some breathing room to blockquotes */
+blockquote {
+    margin: 1em 0;
+    padding: 1em;
+    border-left: 4px solid #666;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+} 
