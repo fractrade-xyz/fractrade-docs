@@ -17,11 +17,13 @@ nav:
   - Home: index.md
   - Core Architecture: architecture.md
   - Components:
-      - Client: components/client.md
+      - Execution Client: components/client.md
       - Strategy: components/strategy.md
       - Publisher: components/publisher.md
-  - Examples: 
-      - Monkey Publisher: examples/monkey_publisher.md
+      - Hyperliquid SDK: components/hyperliquid_sdk.md
+      - Telegram Bot: components/telegram_bot.md
+  - Agent Strategies: 
+      - Demo Trader V1: examples/demotraderv1.md
   - Whitepaper: whitepaper.md
   - FAQ: faq.md
   - Contact: contact.md
