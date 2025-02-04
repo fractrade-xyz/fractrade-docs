@@ -1,3 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://fractrade-xyz.github.io/fractrade-docs/</loc>
+         <lastmod>2025-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fractrade-xyz.github.io/fractrade-docs/architecture/</loc>
+         <lastmod>2025-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fractrade-xyz.github.io/fractrade-docs/faq/</loc>
+         <lastmod>2025-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fractrade-xyz.github.io/fractrade-docs/whitepaper/</loc>
+         <lastmod>2025-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fractrade-xyz.github.io/fractrade-docs/components/client/</loc>
+         <lastmod>2025-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fractrade-xyz.github.io/fractrade-docs/components/publisher/</loc>
+         <lastmod>2025-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fractrade-xyz.github.io/fractrade-docs/components/strategy/</loc>
+         <lastmod>2025-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fractrade-xyz.github.io/fractrade-docs/examples/demotraderv1/</loc>
+         <lastmod>2025-02-04</lastmod>
+    </url>
 </urlset>
