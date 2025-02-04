@@ -234,7 +234,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="components/client.html">Client</a>
+    terminal-mkdocs-side-nav-item" href="components/client.html">Execution Client</a>
         
     
     </li>
@@ -271,6 +271,38 @@
     
     </li>
             
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="components/hyperliquid_sdk.html">Hyperliquid SDK</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="components/telegram_bot.html">Telegram Bot</a>
+        
+    
+    </li>
+            
             
     </ul>
         
@@ -298,7 +330,7 @@
         
     
 
-    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Examples</span>
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Agent Strategies</span>
         
     
     
@@ -317,7 +349,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="examples/monkey_publisher.md">Monkey Publisher</a>
+    terminal-mkdocs-side-nav-item" href="examples/demotraderv1.html">Demo Trader V1</a>
         
     
     </li>
@@ -391,6 +423,8 @@
 <nav>
     <ul>
         <li><a href="#core-architecture">Core Architecture</a></li>
+        <li><a href="#how-it-works-for-users">How it works for users</a></li>
+        <li><a href="#generic-strategies">Generic strategies</a></li><li><a href="#custom-strategies">Custom strategies</a></li><li><a href="#how-it-works-for-publishers">How it works for Publishers</a></li>
         
     </ul>
 </nav>
@@ -398,7 +432,67 @@
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
     <h1 id="core-architecture">Core Architecture</h1>
-<p>coming soon...</p>
+<p>The fractrade.xyz platform consists of multiple components. The main components are:</p>
+<ul>
+<li>
+<p><strong>fractrade.xyz</strong><br />
+  Main website with some infos</p>
+</li>
+<li>
+<p><strong>fractrade.xyz App</strong><br />
+  The webapp is the main interface for interacting with your Agents, creating new agents, researching strategies, etc. </p>
+</li>
+<li>
+<p><strong>fractrade docs</strong><br />
+  This documentation</p>
+</li>
+<li>
+<p><strong>Fractrade ExecutionClient</strong><br />
+  Open source Python client for executing trades on Hyperliquid, receives signals from your Agents.</p>
+</li>
+<li>
+<p><strong>Fractrade Telegram Bot</strong><br />
+  Telegram bot for getting notifications from your Agents.</p>
+</li>
+<li>
+<p><strong>Fractrade Client API</strong><br />
+  API for interacting with your Agents.</p>
+</li>
+<li>
+<p><strong>Fractrade Publisher API</strong><br />
+  API for publishing trading signals and data.</p>
+</li>
+<li>
+<p><strong>Fractrade AI Agent Framework</strong><br />
+  Open Source framework for creating and training AI agents which can publish signals and data to the Publisher API.</p>
+</li>
+<li>
+<p><strong>Fractrade Worker</strong><br />
+  Distributed task queue for executing all platform tasks like sending signals, executing trades, doing custom calculations, scanning the Hyperliquid ecosystem, monitoring on-chain data and offchain data, etc.</p>
+</li>
+</ul>
+<h1 id="how-it-works-for-users">How it works for users</h1>
+<p>Users can signup on the fractrade.xyz App. They can research strategies and configure custom AI agents which execute their preferred strategies. Some strategies are generic, which means the send the same signals/data for all users. Other strategies are custom, which means the send different signals/data for each user.</p>
+<h2 id="generic-strategies">Generic strategies</h2>
+<p>Examples include:</p>
+<ul>
+<li>A new token launched on Hyperliquid</li>
+<li>A new PERP is available on Hyperliquid</li>
+<li>The Market sentiment on Twitter changed</li>
+</ul>
+<h2 id="custom-strategies">Custom strategies</h2>
+<p>Examples include:</p>
+<ul>
+<li>Your portfolio made 300% profit in token X, you might want to rebalance part of the profits into token Y</li>
+<li>There is a big TWAP order executing for one of the tokens in your portfolio </li>
+<li>The smart wallet you are following just bought a new token XYZ</li>
+<li>Your current open long position on BTC-PERP is at risk. There is an upcoming FOMC meeting increasing the volatility of the market and you are near a resistance level</li>
+</ul>
+<p>When your agent and strategy are setup, you can start the agent and see the signals in the UI, on the Websockets and can subscribe to them with the Telegram Bot. If you trade manually on Hyperliquid, using the fractrade.xyz App UI makes sense. For users who want to trade in Telegram with out Telegram Bot integration, setting up the agent subscription in Telegram is useful. And for fully automated algorithmic trading, you want to use the websocket connection to your agent, which gives you all signals in real time and allows you to act on the data or execute trades.</p>
+<p>Agents each have an input and an output. We are basically just passing a JSON data structure from one agent to the next. The output of the previous agent is the input for the next agent and so on. That way we can easily combine multiple agents to create more complex strategies. Your execution client then would just connect to the websocket of the last ageent in the chain and receive the final data / signals. </p>
+<h1 id="how-it-works-for-publishers">How it works for Publishers</h1>
+<p>Developers can use our publisher framework to create custom strategies and data endpoints. They can be published on the marketplace and also require a subscription payment in USDC. Especially running complex AI models might require some resources and a subscription is the only way to make it sustainable.</p>
+<p>To get our marketplace started, fractrade.xyz will offer a set of strategies, data endpoints and agents ready to use, but eventually our goal is to have a marketplace with thousands of strategies, data endpoints and agents. We want to learn and develop together with our community and make it work for everyone.</p>
 </section>
 
             </main>
