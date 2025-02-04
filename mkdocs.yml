@@ -1,10 +1,10 @@
-site_name: fractrade.xyz Documentation
+site_name: fractrade.xyz
 site_description: "Documentation for the fractrade.xyz platform."
 site_url: https://fractrade-xyz.github.io/fractrade-docs/
 theme:
   name: terminal
   palette: 'dark'
-  custom_dir: docs/overrides  # Add custom overrides
+  custom_dir: fractrade_theme
   features:
     - content.code.copy      # Add copy button to code blocks
   
@@ -12,6 +12,7 @@ extra_css:
   - stylesheets/extra.css    # Add custom CSS
 
 docs_dir: docs  # Location of the documentation files
+use_directory_urls: false  # Add this line
 nav:
   - Home: index.md
   - Core Architecture: architecture.md
@@ -23,3 +24,4 @@ nav:
       - Monkey Publisher: examples/monkey_publisher.md
   - Whitepaper: whitepaper.md
   - FAQ: faq.md
+  - Contact: contact.md
