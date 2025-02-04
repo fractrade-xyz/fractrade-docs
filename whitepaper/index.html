@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.1, mkdocs-terminal-4.7.0">
+    
+    <meta name="description" content="Documentation for the fractrade.xyz platform."> 
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Whitepaper - fractrade.xyz Documentation</title>
+
+
+<link href="../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../css/normalize.css" rel="stylesheet">
+<link href="../css/terminal.css" rel="stylesheet">
+<link href="../css/theme.css" rel="stylesheet">
+<link href="../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../css/theme.footer.css" rel="stylesheet">
+<!-- dark color palette -->
+<link href="../css/palettes/dark.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+
+
+    
+    <link href="../stylesheets/extra.css" rel="stylesheet">  
+    
+    
+
+    
+    <!-- search css support -->
+<link href="../css/search/bootstrap-modal.css" rel="stylesheet">
+<!-- search scripts -->
+<script>
+    var base_url = "..",
+    shortcuts = "{}";
+</script>
+<script src="../js/jquery/jquery-1.10.1.min.js" defer></script>
+<script src="../js/bootstrap/bootstrap.min.js" defer></script>
+<script src="../js/mkdocs/base.js" defer></script>
+    
+    
+    
+    
+    <script src="../search/main.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">fractrade.xyz Documentation</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href=".." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../architecture/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Core Architecture</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                
+                
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="./" class="menu-item active" property="item" typeof="WebPage">
+                        <span property="name">Whitepaper</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../faq/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">FAQ</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                    
+                    
+
+
+<li property="itemListElement" typeof="ListItem">
+    <a href="#" class="menu-item" data-toggle="modal" data-target="#mkdocs_search_modal" property="item" typeof="SearchAction">
+        <i aria-hidden="true" class="fa fa-search"></i> <span property="name">Search</span>
+    </a>
+    <meta property="position" content="4">
+</li>
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../architecture/">Core Architecture</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Components</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../components/client/">Client</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../components/strategy/">Strategy</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../components/publisher/">Publisher</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Examples</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../examples/monkey_publisher.md">Monkey Publisher</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        <span class="
+
+    terminal-mkdocs-side-nav-item--active">Whitepaper</span>
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../faq/">FAQ</a>
+        
+    
+    
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#fractrade-whitepaper">FRACTRADE Whitepaper</a></li>
+        <li><a href="#table-of-contents">Table of Contents</a></li><li><a href="#problem-statement">Problem Statement</a></li><li><a href="#the-idea-leveraging-ai-for-smarter-emotion-free-trading">The Idea: Leveraging AI for Smarter, Emotion-Free Trading</a></li><li><a href="#market-analysis">Market Analysis</a></li><li><a href="#llm-and-ai-foundations-and-applications-in-trading">LLM and AI: Foundations and Applications in Trading</a></li><li><a href="#ai-agents-specialized-systems-for-smarter-trading">AI Agents: Specialized Systems for Smarter Trading</a></li><li><a href="#rag-and-cag-real-time-data-with-speed-and-efficiency">RAG and CAG: Real-Time Data with Speed and Efficiency</a></li><li><a href="#hyperliquid-the-optimal-platform-for-trading">Hyperliquid: The Optimal Platform for Trading</a></li><li><a href="#use-cases-ai-agents-for-manual-and-automated-trading">Use Cases: AI Agents for Manual and Automated Trading</a></li><li><a href="#system-architecture-secure-modular-and-user-controlled">System Architecture: Secure, Modular, and User-Controlled</a></li><li><a href="#technology-stack-modular-open-and-performance-optimized">Technology Stack: Modular, Open, and Performance-Optimized</a></li><li><a href="#tokenomics-the-frac-utility-token">Tokenomics: The FRAC Utility Token</a></li><li><a href="#governance">Governance</a></li><li><a href="#roadmap">Roadmap</a></li><li><a href="#closing-words">Closing Words</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="fractrade-whitepaper">FRACTRADE Whitepaper</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#problem-statement">Problem Statement</a></li>
+<li><a href="#the-idea">The Idea: Leveraging AI for Smarter, Emotion-Free Trading</a></li>
+<li><a href="#market-analysis">Market Analysis</a></li>
+<li><a href="#llm-and-ai">LLM and AI: Foundations and Applications in Trading</a></li>
+<li><a href="#ai-agents">AI Agents: Specialized Systems for Smarter Trading</a></li>
+<li><a href="#rag-and-cag">RAG and CAG: Real-Time Data with Speed and Efficiency</a></li>
+<li><a href="#hyperliquid">Hyperliquid: The Optimal Platform for Trading</a></li>
+<li><a href="#use-cases">Use Cases: AI Agents for Manual and Automated Trading</a></li>
+<li><a href="#architecture">System Architecture: Secure, Modular, and User-Controlled</a></li>
+<li><a href="#tech-stack">Technology Stack: Modular, Open, and Performance-Optimized</a></li>
+<li><a href="#tokenomics">Tokenomics: The FRAC Utility Token</a></li>
+<li><a href="#governance">Governance</a></li>
+<li><a href="#roadmap">Roadmap</a></li>
+<li><a href="#closing-words">Closing Words</a></li>
+</ul>
+<h2 id="problem-statement">Problem Statement</h2>
+<p>Trading in financial markets, particularly in the fast-paced world of cryptocurrencies, presents significant challenges for individuals. Manual trading requires an immense time commitment, with traders often glued to their screens for hours, monitoring volatile price movements and analyzing complex data.</p>
+<p>Emotions, a natural part of human decision-making, frequently interfere with rational trading strategies, leading to impulsive decisions, losses, and stress. This emotional toll is especially pronounced in the cryptocurrency market, where unpredictable swings can test even the most disciplined traders.</p>
+<p>Furthermore, the cryptocurrency market operates 24/7, offering no breaks or downtime. While humans need rest and sleep, the market continues, making it impossible for traders to monitor and respond to opportunities or risks at all times.</p>
+<p>Adding to these challenges is the overwhelming volume of information traders must consider—from technical analysis and news updates to social media trends and market sentiment. The sheer amount of data makes it difficult to identify actionable insights and develop effective strategies.</p>
+<p>These factors combined create a trading environment that is not only stressful but also inefficient, leaving room for innovative solutions to address these inherent challenges.</p>
+<h2 id="the-idea-leveraging-ai-for-smarter-emotion-free-trading">The Idea: Leveraging AI for Smarter, Emotion-Free Trading</h2>
+<p>The solution to the challenges of manual trading lies in harnessing the power of advanced artificial intelligence. FRACTRADE proposes leveraging cutting-edge technologies, including large language models (LLMs), Retrieval-Augmented Generation (RAG), and AI agents, to revolutionize the way we trade.</p>
+<p>AI agents are uniquely equipped to handle the complexities of trading. They excel at processing massive amounts of data, identifying patterns, and extracting actionable insights from diverse sources—all in real time. Unlike human traders, AI agents operate 24/7 without the need for breaks, ensuring constant market monitoring and responsiveness. They are immune to the emotional pitfalls that plague human decision-making, such as fear, greed, or panic.</p>
+<p>As AI agents continue to evolve, their capabilities grow, enabling them to perform increasingly sophisticated tasks. The idea behind FRACTRADE is to create a suite of specialized AI agents that work collaboratively to support both manual and fully automated trading strategies. These agents can assist traders by managing risk, developing strategies, identifying market opportunities, and analyzing vast amounts of data efficiently and effectively.</p>
+<p>By combining human expertise with the relentless precision of AI, FRACTRADE aims to empower traders with tools that enhance decision-making, reduce stress, and unlock new levels of trading efficiency and profitability.</p>
+<h2 id="market-analysis">Market Analysis</h2>
+<p>The cryptocurrency trading landscape has experienced significant growth, with Hyperliquid emerging as a leading example of innovation in the space. In 2024, Hyperliquid became one of the fastest-growing layer-1 blockchains, driven by its ability to support high-frequency trading and advanced financial applications. The platform currently accounts for billions of dollars in Total Value Locked (TVL) and generates millions in revenue annually, reflecting the increasing activity in decentralized trading environments.</p>
+<p>The demand for trading solutions is substantial, fueled by the global appeal of cryptocurrencies and their 24/7 market dynamics. Key metrics demonstrate this growth, including a steady rise in spot trading volumes and transaction fees. According to data from Hypurrscan.io/stats, trading activity on platforms like Hyperliquid continues to expand, supported by a growing user base and increasing institutional interest.</p>
+<p>This growth trajectory underscores the importance of developing tools capable of handling the complexities of modern trading. With billions in liquidity and continuous market participation, the need for systems that optimize trading strategies, process vast datasets, and operate without downtime is more evident than ever. FRACTRADE aims to address these requirements, building on the momentum within the market and leveraging cutting-edge technologies to create solutions tailored for the next phase of cryptocurrency trading.</p>
+<h2 id="llm-and-ai-foundations-and-applications-in-trading">LLM and AI: Foundations and Applications in Trading</h2>
+<p>Large Language Models (LLMs) and Artificial Intelligence (AI) are underpinned by deep learning, a sophisticated subset of machine learning that relies on artificial neural networks to simulate how humans process information. Deep learning is designed to uncover patterns and relationships in data by stacking multiple layers of interconnected "neurons," each layer transforming its input to produce more abstract and meaningful representations.</p>
+<h3 id="how-deep-learning-works">How Deep Learning Works</h3>
+<p>Deep learning models are typically structured as multi-layer neural networks. Each neuron in a layer processes a small piece of information, passing it to the next layer for further refinement. These networks consist of three main types of layers:</p>
+<ul>
+<li><strong>Input Layer:</strong> Receives raw data, such as price movements, news text, or other inputs relevant to trading.</li>
+<li><strong>Hidden Layers:</strong> Perform computations, often numbering in the hundreds or thousands, to identify patterns and correlations within the data. These layers utilize non-linear activation functions to capture complex relationships.</li>
+<li><strong>Output Layer:</strong> Provides the final result, such as a prediction or classification (e.g., market sentiment, trading signals).</li>
+</ul>
+<p>The model is trained using backpropagation, where errors in predictions are calculated and used to adjust the model's internal weights. With enough training data, these systems can achieve remarkable accuracy in pattern recognition, language understanding, and decision-making.</p>
+<h3 id="how-llms-work">How LLMs Work</h3>
+<p>LLMs like GPT are built on transformer architectures, which have revolutionized natural language processing. Key concepts include:</p>
+<ul>
+<li><strong>Attention Mechanisms:</strong> These allow the model to focus on the most relevant parts of the input data. For instance, when analyzing a news article, the model identifies critical phrases or sentences that carry the most weight in determining market sentiment.</li>
+<li><strong>Tokenization:</strong> Text input is broken into smaller units called tokens (e.g., words or subwords), enabling the model to process language systematically.</li>
+<li><strong>Pretraining and Fine-Tuning:</strong> LLMs are pretrained on massive datasets covering diverse topics, learning general language patterns. They can then be fine-tuned on domain-specific data, such as financial news, to specialize in tasks relevant to trading.</li>
+</ul>
+<p>LLMs excel at language-based tasks, such as summarizing market reports, extracting sentiment from social media, and providing natural language explanations for trading strategies.</p>
+<h3 id="limitations-of-llms-in-trading">Limitations of LLMs in Trading</h3>
+<p>While powerful, LLMs have inherent limitations in trading applications:</p>
+<ul>
+<li><strong>Lack of Real-Time Data Processing:</strong> LLMs are not inherently designed to work with streaming data, such as live market feeds. Their capabilities are best applied to static or near-real-time datasets.</li>
+<li><strong>Complex Numerical Reasoning:</strong> Although improving, LLMs sometimes struggle with precise calculations or making decisions based purely on numerical data.</li>
+<li><strong>Memory Constraints:</strong> LLMs often operate within a limited context window, making it challenging to analyze long-term dependencies without custom configurations.</li>
+</ul>
+<h3 id="applications-of-deep-learning-and-llms-in-trading">Applications of Deep Learning and LLMs in Trading</h3>
+<p>Despite these limitations, LLMs and AI play a crucial role in augmenting trading operations. Key applications include:</p>
+<ul>
+<li><strong>Market Sentiment Analysis:</strong> Using transformer-based LLMs, traders can monitor social media, forums, and news feeds to identify shifts in sentiment that might signal market movements.</li>
+<li><strong>Risk Management:</strong> Deep learning models can evaluate and optimize portfolio risk dynamically, factoring in market volatility and trader-specific parameters.</li>
+<li><strong>Data Integration:</strong> AI systems can aggregate and analyze diverse datasets, including technical indicators, macroeconomic data, and alternative data sources, to identify correlations and opportunities.</li>
+<li><strong>Strategy Optimization:</strong> LLMs can analyze historical trading performance and assist in backtesting and refining strategies, ensuring better alignment with current market conditions.</li>
+<li><strong>Automation of Insights:</strong> AI can generate concise, actionable insights from extensive datasets, saving traders time while improving decision-making accuracy.</li>
+</ul>
+<p>By leveraging the capabilities of deep learning and LLMs in conjunction with real-time data processing tools, FRACTRADE creates a robust framework for modern trading. This integration ensures a balance between static, language-oriented tasks and dynamic, data-driven operations, maximizing both efficiency and effectiveness.</p>
+<h2 id="ai-agents-specialized-systems-for-smarter-trading">AI Agents: Specialized Systems for Smarter Trading</h2>
+<p>An AI agent is a software entity designed to autonomously perform specific tasks within a defined environment. These agents operate by perceiving their surroundings, analyzing available data, and taking actions to achieve predefined goals. Unlike general AI systems, agents are typically specialized, focusing on distinct tasks and optimizing performance in their specific domain.</p>
+<p>AI agents can be enhanced with fine-tuned models, enabling them to excel in tasks like data analysis, decision-making, or interaction with external systems. They are capable of learning from experience, adapting to changing environments, and working collaboratively to tackle complex challenges.</p>
+<h3 id="why-use-an-agent-based-system-in-trading">Why Use an Agent-Based System in Trading?</h3>
+<p>The complexities of trading make it a natural fit for an agent-based system. Markets operate continuously, producing vast amounts of data and requiring constant vigilance and precision. AI agents bring several advantages to the trading process:</p>
+<ul>
+<li><strong>Specialization:</strong> Agents can be fine-tuned for specific trading functions, such as risk management, market analysis, sentiment analysis, strategy development, and execution.</li>
+<li><strong>24/7 Operation:</strong> Unlike humans, agents can operate around the clock, ensuring continuous market monitoring and quick responses to opportunities or risks.</li>
+<li><strong>Efficiency and Scalability:</strong> By delegating specific tasks to different agents, the system avoids bottlenecks and operates more efficiently.</li>
+<li><strong>Emotion-Free Trading:</strong> Agents make decisions based on data and predefined rules, eliminating the emotional biases that often lead to poor trading outcomes.</li>
+</ul>
+<h3 id="collaboration-among-ai-agents">Collaboration Among AI Agents</h3>
+<p>A key strength of an agent-based system lies in the ability of agents to operate collaboratively, forming a multi-agent system. In such a system, agents communicate and share insights to optimize overall performance. For example:</p>
+<ul>
+<li><strong>Data Flow and Insights:</strong> A sentiment analysis agent might detect a surge in positive sentiment around a cryptocurrency and pass this information to a market analysis agent.</li>
+<li><strong>Task Division:</strong> Agents divide responsibilities, such as one focusing on risk assessment while another identifies potential trade entries.</li>
+<li><strong>Feedback Loops:</strong> Agents can exchange feedback to improve decision-making.</li>
+</ul>
+<h3 id="fine-tuning-and-llm-integration">Fine-Tuning and LLM Integration</h3>
+<p>Each agent can be fine-tuned using specialized large language models or other AI techniques to perform optimally in its designated role. For example:</p>
+<ul>
+<li>A sentiment analysis agent might use a transformer-based LLM fine-tuned on financial news and social media data.</li>
+<li>A strategy optimization agent might leverage a model trained on historical trading data to refine strategies dynamically.</li>
+</ul>
+<p>This agent-based approach enables FRACTRADE to address the diverse challenges of trading with precision, efficiency, and adaptability, creating a robust ecosystem tailored to the demands of modern financial markets.</p>
+<h2 id="rag-and-cag-real-time-data-with-speed-and-efficiency">RAG and CAG: Real-Time Data with Speed and Efficiency</h2>
+<h3 id="the-limitation-of-pretrained-llms">The Limitation of Pretrained LLMs</h3>
+<p>Pretrained Large Language Models (LLMs) are powerful tools for understanding and generating language, but they come with a critical limitation: they rely on static, preexisting data. These models are trained on datasets that represent a snapshot of the past and are not inherently connected to live, real-time data streams. This limitation is particularly problematic for trading, where success often depends on analyzing the most current information, such as live market prices, breaking news, social media sentiment, or on-chain cryptocurrency transactions.</p>
+<h3 id="rag-bridging-llms-with-real-time-data">RAG: Bridging LLMs with Real-Time Data</h3>
+<p>Retrieval-Augmented Generation (RAG) addresses this challenge by combining the generative power of LLMs with real-time data retrieval mechanisms. RAG operates by introducing an intermediary step: retrieving relevant, up-to-date information from external sources and incorporating it into the model's processing pipeline.</p>
+<p>Here's how RAG works in detail:</p>
+<ul>
+<li><strong>Data Vectorization:</strong> Real-time data, such as tweets, news articles, or on-chain transactions, is first converted into vectorized representations using embeddings. Embeddings transform textual or numerical information into a dense, numerical format that captures its meaning or relevance.</li>
+<li><strong>Specialized Vector Databases:</strong> These embeddings are stored in vector databases, which are optimized for similarity searches. When a query is made, the database quickly identifies the most relevant data points by comparing their embeddings to the query vector.</li>
+<li><strong>Dynamic Data Integration:</strong> During inference, the LLM generates a query based on the task at hand (e.g., analyzing the sentiment of recent tweets about Bitcoin). The vector database retrieves the most relevant real-time data, which is then injected into the model's prompt as contextual information.</li>
+<li><strong>Enhanced Outputs:</strong> The LLM uses the retrieved data to generate outputs that reflect both its pretrained knowledge and the most recent, real-time insights. This allows the system to respond dynamically to evolving conditions.</li>
+</ul>
+<h3 id="cag-cache-augmented-generation-for-faster-responses">CAG: Cache-Augmented Generation for Faster Responses</h3>
+<p>While RAG excels at integrating real-time data, frequent queries to external data sources can introduce latency. Cache-Augmented Generation (CAG) addresses this by caching frequently accessed or recently retrieved data, significantly improving response times.</p>
+<p>Here's how CAG works:</p>
+<ul>
+<li><strong>Caching Frequently Used Data:</strong> When an AI agent retrieves data from external sources, it stores the results in a local cache for future use.</li>
+<li><strong>Fast Retrieval from Cache:</strong> For subsequent queries that match or closely resemble cached data, the system retrieves the information directly from the cache instead of querying external sources.</li>
+<li><strong>Cache Updates:</strong> The cache is periodically refreshed to ensure that data remains relevant and accurate, balancing speed with the need for up-to-date information.</li>
+</ul>
+<h3 id="benefits-of-combining-rag-and-cag-in-trading">Benefits of Combining RAG and CAG in Trading</h3>
+<p>The integration of RAG and CAG provides a robust framework for balancing real-time data accuracy and system efficiency:</p>
+<ul>
+<li><strong>Real-Time Responsiveness:</strong> RAG ensures that agents have access to the latest data, critical for high-frequency or fast-moving markets.</li>
+<li><strong>Faster Decision-Making:</strong> CAG accelerates responses by leveraging cached data for commonly accessed queries, reducing latency and improving the system's ability to react to immediate trading opportunities.</li>
+<li><strong>Optimized Resource Use:</strong> By caching data, the system minimizes redundant data retrieval operations, reducing computational overhead and improving scalability.</li>
+</ul>
+<h3 id="use-cases-in-trading">Use Cases in Trading</h3>
+<ul>
+<li><strong>Social Media Sentiment Analysis:</strong> A Sentiment Analysis Agent retrieves recent tweets about Bitcoin. If a new query arrives shortly after, CAG checks the cache for previously retrieved tweets, providing faster results without redundant API calls.</li>
+<li><strong>On-Chain Transaction Monitoring:</strong> An agent monitoring Ethereum blockchain activity caches high-priority transaction data, ensuring rapid responses to queries about recent large transactions or wallet movements.</li>
+<li><strong>Market Data:</strong> Price and volume data frequently accessed during trading sessions can be cached for instant retrieval while still periodically refreshing from live feeds.</li>
+</ul>
+<h3 id="rag-and-cag-in-fractrade">RAG and CAG in FRACTRADE</h3>
+<p>In FRACTRADE, every agent is built to leverage RAG for real-time data and CAG for efficient processing. This dual-layer system allows the platform to remain both adaptive and high-performing, ensuring agents operate with the latest data while maintaining low latency. The synergy between these technologies is critical for modern trading environments, where both speed and precision are essential.</p>
+<h2 id="hyperliquid-the-optimal-platform-for-trading">Hyperliquid: The Optimal Platform for Trading</h2>
+<p>FRACTRADE leverages Hyperliquid, the most advanced and successful trading platform available, as the foundation for its operations. Hyperliquid's unique features and robust infrastructure make it the ideal choice for building a high-performance trading system.</p>
+<h3 id="why-hyperliquid">Why Hyperliquid?</h3>
+<ul>
+<li><strong>Exceptional Performance:</strong> Hyperliquid is built on a custom Layer 1 blockchain optimized for speed and scalability. With the ability to process 100,000 orders per second and achieve block latency of under 1 second, it sets a new benchmark for trading platforms.</li>
+<li><strong>Transparent and Open Data:</strong> As a fully on-chain trading platform, Hyperliquid records every order, cancelation, trade, and liquidation transparently on the blockchain.</li>
+<li><strong>Liquidity and Volume Leadership:</strong> Hyperliquid is not only the largest on-chain trading platform by volume but also outpaces many centralized exchanges.</li>
+<li><strong>Robust Security:</strong> Its custom consensus algorithm, HyperBFT, is inspired by cutting-edge protocols like Hotstuff and has been tailored to the platform's unique requirements.</li>
+<li><strong>Comprehensive API Support:</strong> Hyperliquid offers well-documented and efficient APIs, making it easy for FRACTRADE to integrate and automate complex trading workflows.</li>
+<li><strong>User-Centric Design:</strong> Despite its cutting-edge infrastructure, Hyperliquid prioritizes user experience.</li>
+</ul>
+<h3 id="key-features-of-hyperliquid">Key Features of Hyperliquid</h3>
+<ul>
+<li><strong>HyperBFT Consensus Algorithm:</strong> A custom consensus algorithm designed for high throughput and low latency.</li>
+<li><strong>Native On-Chain Order Book:</strong> The flagship application operates as a fully on-chain order book for perpetual trading.</li>
+<li><strong>Scalability:</strong> Support for 100,000 orders per second.</li>
+<li><strong>Ecosystem Development:</strong> Expanding into spot trading, permissionless liquidity, and other financial primitives.</li>
+</ul>
+<h2 id="use-cases-ai-agents-for-manual-and-automated-trading">Use Cases: AI Agents for Manual and Automated Trading</h2>
+<p>The flexibility and specialization of AI agents make them valuable across various trading scenarios, from assisting manual traders to running fully automated strategies. Below are examples of how FRACTRADE agents can be applied effectively.</p>
+<h3 id="assisting-manual-trading">Assisting Manual Trading</h3>
+<p>AI agents can act as personal trading assistants, streamlining tasks that typically consume a trader's time and energy.</p>
+<p>Sentiment Analysis Agent: This agent scans social media, news, and forums in real time to provide sentiment indicators for specific assets. For example, it might detect a sudden surge in positive mentions of Ethereum on Twitter, alerting a manual trader to potential opportunities.</p>
+<p>Market Data Aggregator Agent: This agent consolidates data from multiple sources, such as live price feeds, technical indicators, and on-chain metrics, into a single, easy-to-interpret dashboard. Traders can quickly access key insights without sifting through multiple platforms.</p>
+<p>Risk Management Agent: Designed to assist traders in maintaining discipline, this agent monitors a trader's portfolio and flags positions that exceed predefined risk parameters. For example, it can alert the trader if a trade violates their risk tolerance or recommend adjustments to balance risk exposure.</p>
+<h3 id="fully-automated-trading">Fully Automated Trading</h3>
+<p>AI agents excel in executing predefined trading strategies autonomously. These agents operate 24/7, ensuring trades are executed without delays or emotional interference.</p>
+<p>Strategy Execution Agent: This agent runs a fully automated trading strategy based on technical analysis, such as identifying and acting on breakout patterns or executing mean-reversion strategies. The agent ensures that trades are executed with precision and consistency.</p>
+<p>Market-Making Agent: By providing liquidity to order books, this agent places buy and sell orders at predefined intervals to capture the bid-ask spread. Hyperliquid's deep liquidity and low-latency infrastructure make this an ideal environment for such strategies.</p>
+<p>Trend-Following Agent: Using real-time data and machine learning models, this agent identifies trends in asset prices and places trades aligned with the direction of those trends. For instance, if Bitcoin enters a sustained upward trend, the agent automatically opens long positions.</p>
+<h3 id="backtesting-and-strategy-optimization">Backtesting and Strategy Optimization</h3>
+<p>Backtesting is crucial for developing effective trading strategies, and AI agents simplify this process:</p>
+<p>Backtesting Agent: This agent evaluates trading strategies against historical data to assess their performance under various market conditions. It can quickly iterate through different parameter configurations, identifying the most robust and profitable setups.</p>
+<p>Optimization Agent: Building on the backtesting agent, this agent refines strategies by optimizing parameters such as stop-loss levels, position sizing, and entry/exit rules. For example, it can determine the ideal moving average crossover thresholds for a given asset.</p>
+<h3 id="hyperliquid-vaults-monetizing-strategies">Hyperliquid Vaults: Monetizing Strategies</h3>
+<p>Hyperliquid Vaults enable traders to make their strategies publicly available, providing an opportunity to earn additional income through fees from followers.</p>
+<p>Vault Deployment Agent: This agent assists traders in deploying their strategies as Hyperliquid Vaults. It automates the process of configuring and publishing a trading strategy, ensuring it meets all necessary criteria.</p>
+<p>Follower Analytics Agent: Once a Vault is live, this agent tracks the performance of the strategy and analyzes follower activity, helping the trader optimize fees and attract more participants.</p>
+<p>For example, a trader who has developed a successful automated scalping strategy can deploy it as a Vault. Other users can then subscribe to the Vault, automatically replicating its trades. The trader earns a percentage of the profits or a fixed fee from these followers, creating a passive income stream.</p>
+<p>By integrating these diverse use cases, FRACTRADE demonstrates how AI agents can revolutionize trading, offering tools that support manual efforts, fully automate complex strategies, and even create new income opportunities for traders.</p>
+<h2 id="system-architecture-secure-modular-and-user-controlled">System Architecture: Secure, Modular, and User-Controlled</h2>
+<p>The architecture of FRACTRADE is designed to prioritize user security, modularity, and flexibility while leveraging Hyperliquid's robust API for executing trades and monitoring positions. The system empowers users to configure, deploy, and manage AI agents with full control over their strategies and sensitive information.</p>
+<h3 id="key-architectural-features">Key Architectural Features</h3>
+<h4 id="user-centric-agent-configuration">User-Centric Agent Configuration:</h4>
+<ul>
+<li>Users interact with FRACTRADE through a dedicated web interface, where they can configure their agents and trading strategies.</li>
+<li>Configurations are stored in a standardized JSON format that defines the agent's parameters, data sources, and execution rules.</li>
+<li>To enhance security, API keys required for trading are not entered into the website but are added locally by the user after downloading the JSON configuration file. This ensures that FRACTRADE never has access to user funds or sensitive credentials.</li>
+</ul>
+<h4 id="local-deployment-for-enhanced-security">Local Deployment for Enhanced Security:</h4>
+<ul>
+<li>Users are encouraged to deploy their agents on a Linux VPS (Virtual Private Server) or other secure environments. This setup ensures full control over agent execution while maintaining optimal security for trading operations.</li>
+<li>By running agents locally or on user-managed servers, the architecture eliminates centralized points of failure and significantly reduces risks.</li>
+</ul>
+<h4 id="agent-marketplace">Agent Marketplace:</h4>
+<ul>
+<li>FRACTRADE provides a marketplace where users can subscribe to or publish agents for a monthly fee.</li>
+<li>Published agents can be monetized by their creators, fostering a community-driven ecosystem of innovation.</li>
+<li>Agents in the marketplace are run on dedicated, secured, and redundant hardware to ensure reliable performance and scalability.</li>
+</ul>
+<h4 id="unified-python-api-for-inter-agent-communication">Unified Python API for Inter-Agent Communication:</h4>
+<ul>
+<li>FRACTRADE offers a unified Python API that allows seamless integration and communication between multiple agents. This ensures that users can extend functionality or customize workflows without compatibility issues.</li>
+<li>Agents can interact as data sources for other agents, enabling modular and scalable configurations. For example, a sentiment analysis agent can provide insights directly to a strategy execution agent.</li>
+</ul>
+<h4 id="standard-agent-library">Standard Agent Library:</h4>
+<ul>
+<li>FRACTRADE provides a set of free-to-use standard agents that cater to common trading tasks such as risk management, sentiment analysis, and basic strategy execution. These agents serve as a starting point for users and are fully compatible with the marketplace and custom configurations.</li>
+</ul>
+<h4 id="hardware-and-infrastructure">Hardware and Infrastructure:</h4>
+<ul>
+<li>For agents published in the marketplace or requiring advanced capabilities, FRACTRADE runs them on dedicated hardware designed for high performance and reliability.</li>
+<li>These systems are secured with industry-best practices, including redundancy, regular updates, and task-specific optimizations.</li>
+</ul>
+<h3 id="workflow-example">Workflow Example</h3>
+<ol>
+<li><strong>Agent Configuration:</strong> The user visits the FRACTRADE website and configures an agent or a set of agents using the intuitive web interface. This includes defining trading strategies, data sources, and operational parameters.</li>
+<li><strong>Download and Deployment:</strong> The user downloads the agent configuration as a JSON file and adds their API keys locally. The agents are then deployed on a Linux VPS or other secure environment.</li>
+<li><strong>Execution and Monitoring:</strong> The agents execute trades and monitor positions through Hyperliquid's API, performing tasks such as analyzing market data, managing risk, and executing strategies based on real-time insights.</li>
+<li><strong>Extending Functionality:</strong> Users can subscribe to additional agents from the marketplace or integrate custom agents using the Python API, creating a modular and extensible system tailored to their needs.</li>
+</ol>
+<p>This architecture ensures that FRACTRADE provides a secure, user-first platform that prioritizes transparency, modularity, and scalability. Users retain full control over their funds and configurations while benefiting from a robust ecosystem of advanced AI trading agents.</p>
+<h2 id="technology-stack-modular-open-and-performance-optimized">Technology Stack: Modular, Open, and Performance-Optimized</h2>
+<p>FRACTRADE is built on a modern, flexible technology stack that prioritizes performance, security, and ease of integration. By leveraging open-source tools and standards, the system ensures transparency, scalability, and extensibility for all users.</p>
+<h3 id="core-programming-languages">Core Programming Languages</h3>
+<ul>
+<li><strong>Python:</strong> The primary language for developing FRACTRADE due to its extensive libraries, ease of use, and versatility in handling data science, machine learning, and API integration tasks.</li>
+<li><strong>Rust:</strong> Employed for performance-critical components to maximize speed and efficiency in handling high-throughput processes.</li>
+</ul>
+<h3 id="ai-and-machine-learning">AI and Machine Learning</h3>
+<ul>
+<li><strong>Fine-Tuned LLMs:</strong> The system uses fine-tuned Llama models and other pre-trained large language models available on Hugging Face. This ensures robust AI capabilities for tasks such as sentiment analysis and market data processing.</li>
+<li><strong>Custom Integrations:</strong> Users can integrate other LLMs, such as OpenAI's GPT or Anthropic's Claude, via their APIs, providing flexibility in AI model selection.</li>
+<li><strong>Vector Databases:</strong> Specialized vector databases are used to store and query embedding data efficiently, powering real-time AI capabilities like RAG (Retrieval-Augmented Generation).</li>
+</ul>
+<h3 id="data-storage-and-management">Data Storage and Management</h3>
+<ul>
+<li><strong>PostgreSQL:</strong> A reliable and scalable relational database for managing structured data.</li>
+<li><strong>Redis:</strong> Used for high-performance caching, enabling faster data access and reduced latency in agent execution workflows.</li>
+</ul>
+<h3 id="trade-execution-and-backtesting">Trade Execution and Backtesting</h3>
+<ul>
+<li><strong>Hyperliquid API:</strong> The platform uses Hyperliquid's custom Python client for seamless trade execution and position monitoring.</li>
+<li><strong>Freqtrade:</strong> An open-source framework for backtesting trading algorithms is integrated for strategy evaluation and optimization.</li>
+</ul>
+<h3 id="frontend-and-task-management">Frontend and Task Management</h3>
+<ul>
+<li><strong>Django:</strong> Powers the web interface, providing a user-friendly way to configure agents, download configurations, and access the agent marketplace.</li>
+<li><strong>Celery:</strong> Used for task execution, ensuring that agents operate efficiently and asynchronously.</li>
+</ul>
+<h3 id="system-environment">System Environment</h3>
+<ul>
+<li><strong>Linux (Debian):</strong> All agents and software are developed and tested on Debian Linux. While Python is platform-independent, Linux provides a secure and stable environment for production deployments.</li>
+<li><strong>Open Standards:</strong> The system adheres strictly to open standards, ensuring interoperability and reducing dependency on proprietary solutions.</li>
+</ul>
+<h3 id="open-source-and-community-focus">Open Source and Community Focus</h3>
+<p>FRACTRADE is committed to leveraging and contributing to the open-source ecosystem:</p>
+<ul>
+<li><strong>Prebuilt Solutions:</strong> The system integrates prebuilt tools wherever possible to avoid redundant development.</li>
+<li><strong>GitHub Repository:</strong> Most of the project's codebase will be published and managed on GitHub, promoting transparency, collaboration, and community-driven improvements.</li>
+</ul>
+<h3 id="future-proof-design">Future-Proof Design</h3>
+<p>While the initial focus is on Hyperliquid, the architecture is designed to support additional exchanges and trading platforms in the future. This ensures that the system remains adaptable to evolving market demands and user needs.</p>
+<h2 id="tokenomics-the-frac-utility-token">Tokenomics: The FRAC Utility Token</h2>
+<p>!!! info
+    <strong>Important Note:</strong> The FRAC token was not launched by us but represents a community takeover to experiment with various governance mechanisms (DAOs). We do not hold the majority of the FRAC token or have any control over it. If we decide to launch our own token in the future, all current FRAC holders will be rewarded.</p>
+<p>The FRACTRADE ecosystem is powered by the FRAC token, a pure utility token designed to provide access, governance, and additional features to its holders. By integrating the token into the platform's core functionality, FRACTRADE ensures a fair, democratic, and community-driven approach to development and usage.</p>
+<h3 id="token-details">Token Details</h3>
+<ul>
+<li><strong>Total Supply:</strong> 23,596,502.22 FRAC</li>
+<li><strong>Burned Tokens:</strong> 19,600,000 FRAC (83.05% of total supply)</li>
+<li><strong>Circulating Supply:</strong> Approximately 4 million FRAC</li>
+<li><strong>Market Availability:</strong> FRAC tokens are actively tradable on the Hyperliquid spot market under the ticker FRAC.</li>
+</ul>
+<h3 id="token-explorer">Token Explorer</h3>
+<p>Detailed token information can be found at:
+- Hyperliquid Token Explorer
+- Hypurrscan Token Details</p>
+<h3 id="primary-utility-access-to-exclusive-features-and-strategies">Primary Utility: Access to Exclusive Features and Strategies</h3>
+<p>The main utility of the FRAC token is to limit access to certain platform features and trading strategies. This restriction serves two purposes:</p>
+<ul>
+<li><strong>Liquidity Management:</strong> Some trading strategies, such as early sniping of low-liquidity tokens, require limited access to maintain their effectiveness. By gating access with FRAC tokens, the platform ensures that these strategies remain profitable for participants.</li>
+<li><strong>Exclusive Features:</strong> Certain advanced platform functionalities will be accessible only to FRAC holders, incentivizing participation in the ecosystem.</li>
+</ul>
+<h3 id="governance-and-decentralized-decision-making">Governance and Decentralized Decision-Making</h3>
+<p>FRAC tokens also serve as the foundation for the platform's governance system:</p>
+<ul>
+<li><strong>Voting Power:</strong> Each FRAC token represents one vote in critical decisions regarding the platform's development and future direction. Token holders can participate in votes on major updates, feature additions, and strategic changes.</li>
+<li><strong>Democratic Development:</strong> By enabling community-driven governance, FRACTRADE aims to make the project as inclusive and democratic as possible. Every participant has the opportunity to influence the project's evolution and benefit from its growth.</li>
+</ul>
+<h3 id="future-utility">Future Utility</h3>
+<p>While the initial focus is on access and governance, FRACTRADE is exploring additional utilities for the FRAC token, including:</p>
+<ul>
+<li>Incentives for contributing to the ecosystem, such as publishing high-quality agents or strategies in the marketplace.</li>
+<li>Discounts or enhanced features for token holders, encouraging active participation in the ecosystem.</li>
+</ul>
+<p>The FRAC token embodies FRACTRADE's vision of a transparent, community-driven trading platform. By combining practical utility with decentralized governance, it empowers users to shape the platform while gaining access to exclusive opportunities and features.</p>
+<h2 id="governance">Governance</h2>
+<p>Governance in the FRACTRADE ecosystem is powered by the FRAC token, ensuring a decentralized, transparent, and community-driven approach to decision-making.</p>
+<h3 id="one-token-one-vote">One Token, One Vote</h3>
+<p>Each FRAC token represents one vote, allowing all token holders to participate in critical decisions about the platform's development and future direction. This decentralized structure ensures that no single entity has disproportionate control, promoting fairness and inclusivity.</p>
+<h3 id="open-to-everyone-focused-on-merit">Open to Everyone, Focused on Merit</h3>
+<p>FRACTRADE's governance philosophy is rooted in inclusivity and meritocracy. We welcome participation from anyone, regardless of age, gender, race, or religion. What matters is skill and the value you bring to the project. The more value you provide to the ecosystem—whether through creating agents, contributing ideas, or engaging with the community—the greater your influence within the governance process.</p>
+<h3 id="on-chain-governance-mechanism">On-Chain Governance Mechanism</h3>
+<p>To enhance transparency and trust, FRACTRADE will implement an on-chain governance mechanism in the future. This system will ensure that all decisions and votes are recorded directly on the blockchain, making the process verifiable and tamper-proof. Token holders will have a direct and undeniable role in shaping the project's evolution.</p>
+<p>This governance model ensures that FRACTRADE remains an open, democratic, and user-focused platform, driven by the collective expertise and contributions of its community.</p>
+<h2 id="roadmap">Roadmap</h2>
+<p>The FRACTRADE roadmap outlines our ambitious milestones and goals as we progress toward delivering an advanced, AI-driven trading platform. As a cutting-edge project in a rapidly evolving field, we believe in focusing on quality and innovation over rigid deadlines. Features will be shipped when they are ready, and we are committed to working as fast as possible to deliver the best results.</p>
+<h3 id="milestones">Milestones</h3>
+<h4 id="foundation-building">Foundation Building</h4>
+<ul>
+<li><strong>Whitepaper Release:</strong> Publish the official FRACTRADE whitepaper, detailing the vision, technology, and roadmap.</li>
+<li><strong>Website Launch:</strong> Launch the FRACTRADE website to provide information about the project, including features, updates, and a community hub.</li>
+<li><strong>Private Alpha Test:</strong> Release a private alpha version of the platform to a select group of testers for initial feedback and debugging.</li>
+</ul>
+<h4 id="core-infrastructure-and-initial-agents">Core Infrastructure and Initial Agents</h4>
+<ul>
+<li><strong>API Development:</strong> Launch the first version of the unified Python API, allowing users to connect and configure agents seamlessly.</li>
+<li><strong>First Agents Released:</strong> Deploy the first set of standard agents, including basic sentiment analysis, risk management, and strategy execution agents.</li>
+<li><strong>Feedback Integration:</strong> Use insights from alpha testers to refine the platform and address performance bottlenecks.</li>
+</ul>
+<h4 id="marketplace-and-public-access">Marketplace and Public Access</h4>
+<ul>
+<li><strong>Agent Marketplace Launch:</strong> Open the agent marketplace, enabling users to subscribe to or publish custom agents for a monthly fee.</li>
+<li><strong>Expanded Testing:</strong> Expand platform access to a broader audience to test scalability and agent performance in real-world conditions.</li>
+<li><strong>Hyperliquid Vaults Integration:</strong> Introduce the ability to publish and trade strategies using Hyperliquid Vaults, enabling users to earn income from followers.</li>
+</ul>
+<h4 id="public-release-and-advanced-features">Public Release and Advanced Features</h4>
+<ul>
+<li><strong>Platform Public Release:</strong> Launch the platform with access to all core features, including standard agents, the API, and the agent marketplace.</li>
+<li><strong>Advanced Agents:</strong> Introduce more complex agents, such as multi-strategy optimization agents and real-time sentiment integration using RAG.</li>
+<li><strong>On-Chain Governance:</strong> Deploy the initial FRAC token-based governance mechanism, enabling community-driven decision-making.</li>
+</ul>
+<h4 id="future-developments">Future Developments</h4>
+<ul>
+<li><strong>Multi-Exchange Support:</strong> Expand trading capabilities to include additional exchanges beyond Hyperliquid.</li>
+<li><strong>Enhanced Agent Functionality:</strong> Develop agents that support cross-market analysis and multi-asset strategies.</li>
+<li><strong>Community Contributions:</strong> Incorporate community-driven proposals and ideas through on-chain governance.</li>
+<li><strong>Exploration of Advanced AI Models:</strong> Integrate cutting-edge AI techniques, such as reinforcement learning and generative adversarial networks (GANs), to refine and optimize strategies.</li>
+</ul>
+<p>At FRACTRADE, our approach ensures that every feature and release meets the highest standards. While we work as efficiently as possible, we prioritize readiness and quality over fixed deadlines. This philosophy enables us to adapt to technological advancements and user needs, ensuring a platform that evolves alongside the trading landscape.</p>
+<h2 id="closing-words">Closing Words</h2>
+<p>FRACTRADE represents a bold step forward in the evolution of trading, combining cutting-edge AI technology, innovative agent-based systems, and a transparent, decentralized approach to governance. By addressing the challenges of manual trading and leveraging the capabilities of advanced AI, we aim to create a platform that empowers traders of all levels to achieve more, stress less, and unlock new opportunities in the financial markets.</p>
+<p>Our vision is not just to build a platform, but to foster a collaborative ecosystem where ideas, strategies, and tools are shared, refined, and improved by a community of forward-thinking traders and developers. With transparency, security, and user empowerment as our core principles, FRACTRADE is poised to redefine what's possible in trading.</p>
+<p>We invite you to join us on this journey—whether as a trader, a developer, or simply a curious observer—and be part of shaping the future of AI-powered trading. Together, we can push the boundaries of what technology and human ingenuity can achieve.</p>
+</section>
+
+            </main>
+        </div>
+        <hr><footer>
+    <div class="container">
+        <p>fractrade.xyz 2025 | Site built with MkDocs and Terminal for MkDocs</p>
+    </div>
+</footer> 
+    </div>
+
+    
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="alertdialog" aria-modal="true" aria-labelledby="searchModalLabel">
+    <div class="modal-dialog modal-lg" role="search">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Search</h5>
+                <button type="button" class="close btn btn-default btn-ghost" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p id="searchInputLabel">Type to start searching</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" aria-labelledby="searchInputLabel" placeholder="" id="mkdocs-search-query" title="Please enter search terms here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No document matches found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</body>
+
+</html>
