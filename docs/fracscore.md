@@ -54,15 +54,11 @@ By eliminating fixed token requirements and implementing a percentage-based syst
 
 ## Idea 2: The FRAC Score: A Dynamic Loyalty Measurement System
 
-Our second idea, which we currently use, is called the **FRAC score** and the basic idea is to measure FRAC holders loyalty through multiple weighted factors. Unlike traditional fixed balance requirements, this system creates a more equitable and flexible environment for all participants. You can find an example implementation here in our Github.
+Our second idea, which we currently use, is called the FRAC score and the basic idea is to measure FRAC holders loyalty through multiple weighted factors. Unlike traditional fixed balance requirements, this system creates a more equitable and flexible environment for all participants. You can find an example implementation here in our Github.
 
 Hint: This purpose of this article is to explain the idea. The numbers might and details might change and will be documented on our official website fractrade.xyz.
 
 **The FRAC Score is our solution to make token-based platform access fairer for everyone. Instead of requiring users to hold a fixed amount of tokens, which can become very expensive as token prices rise, we measure how loyal and engaged our token holders are through different factors.**
-
-## The FRAC Score Solution
-
-The FRAC Score is a dynamic loyalty measurement system that considers multiple factors to determine platform access and rewards.
 
 To be included in the FRAC Score system, a wallet needs to show basic engagement with our platform. This means:
 - Holding at least 100 FRAC tokens
@@ -117,9 +113,9 @@ Now based on that FRAC Score we can easily build upon it to grant access to diff
 
 Another interesting solution would be to automatically distribute rewards from platform fees, the Hyperliquid vaults of our Agents and trading activities to users. The distribution would work by:
 
- - Adding up all users' FRAC scores
- - Calculating each user's percentage of the total score
- - Distributing rewards based on these percentages
+- Adding up all users' FRAC scores
+- Calculating each user's percentage of the total score
+- Distributing rewards based on these percentages
 
 This approach offers significant advantages over traditional staking:
 - No need to lock tokens in smart contracts
