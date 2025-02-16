@@ -25,5 +25,6 @@ nav:
   - Agent Strategies: 
       - Demo Trader V1: examples/demotraderv1.md
   - Whitepaper: whitepaper.md
+  - FRAC Score: fracscore.md
   - FAQ: faq.md
   - Contact: contact.md
