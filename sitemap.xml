@@ -2,46 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://fractrade-xyz.github.io/fractrade-docs/index.html</loc>
-         <lastmod>2025-02-04</lastmod>
+         <lastmod>2025-02-16</lastmod>
     </url>
     <url>
          <loc>https://fractrade-xyz.github.io/fractrade-docs/architecture.html</loc>
-         <lastmod>2025-02-04</lastmod>
+         <lastmod>2025-02-16</lastmod>
     </url>
     <url>
          <loc>https://fractrade-xyz.github.io/fractrade-docs/contact.html</loc>
-         <lastmod>2025-02-04</lastmod>
+         <lastmod>2025-02-16</lastmod>
     </url>
     <url>
          <loc>https://fractrade-xyz.github.io/fractrade-docs/faq.html</loc>
-         <lastmod>2025-02-04</lastmod>
+         <lastmod>2025-02-16</lastmod>
+    </url>
+    <url>
+         <loc>https://fractrade-xyz.github.io/fractrade-docs/fracscore.html</loc>
+         <lastmod>2025-02-16</lastmod>
     </url>
     <url>
          <loc>https://fractrade-xyz.github.io/fractrade-docs/whitepaper.html</loc>
-         <lastmod>2025-02-04</lastmod>
+         <lastmod>2025-02-16</lastmod>
     </url>
     <url>
          <loc>https://fractrade-xyz.github.io/fractrade-docs/components/client.html</loc>
-         <lastmod>2025-02-04</lastmod>
+         <lastmod>2025-02-16</lastmod>
     </url>
     <url>
          <loc>https://fractrade-xyz.github.io/fractrade-docs/components/hyperliquid_sdk.html</loc>
-         <lastmod>2025-02-04</lastmod>
+         <lastmod>2025-02-16</lastmod>
     </url>
     <url>
          <loc>https://fractrade-xyz.github.io/fractrade-docs/components/publisher.html</loc>
-         <lastmod>2025-02-04</lastmod>
+         <lastmod>2025-02-16</lastmod>
     </url>
     <url>
          <loc>https://fractrade-xyz.github.io/fractrade-docs/components/strategy.html</loc>
-         <lastmod>2025-02-04</lastmod>
+         <lastmod>2025-02-16</lastmod>
     </url>
     <url>
          <loc>https://fractrade-xyz.github.io/fractrade-docs/components/telegram_bot.html</loc>
-         <lastmod>2025-02-04</lastmod>
+         <lastmod>2025-02-16</lastmod>
     </url>
     <url>
          <loc>https://fractrade-xyz.github.io/fractrade-docs/examples/demotraderv1.html</loc>
-         <lastmod>2025-02-04</lastmod>
+         <lastmod>2025-02-16</lastmod>
     </url>
 </urlset>
