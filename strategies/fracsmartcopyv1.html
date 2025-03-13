@@ -10,7 +10,7 @@
     <meta name="description" content="Documentation for the fractrade.xyz platform."> 
      
     
-    <link rel="canonical" href="https://fractrade-xyz.github.io/fractrade-docs/examples/demotraderv1.html"><link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
+    <link rel="canonical" href="https://fractrade-xyz.github.io/fractrade-docs/strategies/fracsmartcopyv1.html"><link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
 <link rel="icon" type="image/png" sizes="512x512" href="../img/android-chrome-512x512.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png" />
 <link rel="shortcut icon" type="image/png" sizes="48x48" href="../img/favicon.ico" />
@@ -20,7 +20,7 @@
 
     
  
-<title>Demo Trader V1 - fractrade.xyz</title>
+<title>FRAC Smart Copy V1 - fractrade.xyz</title>
 
 
 <link href="../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
@@ -107,6 +107,8 @@
                     </a>
                     <meta property="position" content="1">
                 </li>
+                
+                
                 
                 
                 
@@ -244,6 +246,22 @@
         
             <a class="
 
+    terminal-mkdocs-side-nav-item" href="../components/agent.html">Agent</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
     terminal-mkdocs-side-nav-item" href="../components/client.html">Execution Client</a>
         
     
@@ -333,6 +351,57 @@
             
     
         
+        
+            
+            
+            <span class="
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">API Reference</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../api/websocket.html">Websocket API</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+
+        
+            
+    
+        
         <span class="
         
     
@@ -352,9 +421,25 @@
                 <li class="terminal-mkdocs-side-nav-li-ul-li">
     
         
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="demotraderv1.html">Demo Trader V1</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
         <span class="
 
-    terminal-mkdocs-side-nav-item--active">Demo Trader V1</span>
+    terminal-mkdocs-side-nav-item--active">FRAC Smart Copy V1</span>
     
     </li>
             
@@ -445,18 +530,31 @@
 </nav><hr>
 <nav>
     <ul>
-        <li><a href="#demo-trader-v1">Demo Trader V1</a></li>
+        <li><a href="#frac-smart-copy-v1">FRAC Smart Copy V1</a></li>
         <li><a href="#overview">Overview</a></li><li><a href="#setup">Setup</a></li>
     </ul>
 </nav>
 </aside>
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
-    <h1 id="demo-trader-v1">Demo Trader V1</h1>
+    <h1 id="frac-smart-copy-v1">FRAC Smart Copy V1</h1>
 <h2 id="overview">Overview</h2>
-<p>The Demo Trader V1 is a simple demo trading agent that trades BTC-PERPS on Hyperliquid. It is a generic strategy that trades on Hyperliquid. The idea is just to generate some random trading signals to test the platform, the agents and the telegram notifications.</p>
+<p>This strategy can monitor and copy trades from another wallet or vault. </p>
+<ul>
+<li>New positions will be automatically copied</li>
+<li>Position changes will be copied</li>
+<li>Allows for dynamic position size scaling to also copy the risk management</li>
+<li>Max draw down protection</li>
+<li>Telegram notification integration</li>
+<li>Symbol whitelist and blacklist feature</li>
+</ul>
 <h2 id="setup">Setup</h2>
-<p>To use the strategy, you need to create a new agent and select the <code>Demo Trader V1</code> strategy. You can then see the signals in the UI, on the Websockets and can subscribe to them with the Telegram Bot.</p>
+<p>To use the strategy, you need to create a new agent and select the <code>FRAC Smart Copy V1</code> strategy. In the strategy configuration you can set the watched wallet. All trades from this wallet will be monitored and copied. </p>
+<p>If dynamic position sizing is enabled the position size will be automatically scaled to your wallet balance. So if the original wallet has a 100k USDC balance and opens a 10k position and you have a 10k USDC balance, your position size will be 1k. </p>
+<p>The strategy regularly takes a snapshot of the performance and the ATH. If there is a drawdown of more than MAX_DRAWDOWN_PERCENT the agent will deactivate it self. </p>
+<p>The strategy also allows to be used for telegram notifications only. After creating the agent in the webinterface, you find the agents public token in the Webfrontend. You can then subscribe to this signals with your Telegram account by writing the fractrade Telegram bot ( @fractrade_bot ) using the command /subscribe <public token id>.</p>
+<p>If you have an execution wallet configured, which you can do in the "Wallets" menu, this strategy can automatically copy all trades in your wallet. To do so, go to the agents settings and configure the execution wallet. Please make sure to use a Hyperliquid API wallet as regular wallets are not supported for security reasons. </p>
+<p>You can also use the FRAC Smart Copy V1 strategy with the custom execution client. All trading signals will be written to the websocket of the agent with a small delay. </p>
 </section>
 
             </main>

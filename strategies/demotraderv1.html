@@ -10,7 +10,7 @@
     <meta name="description" content="Documentation for the fractrade.xyz platform."> 
      
     
-    <link rel="canonical" href="https://fractrade-xyz.github.io/fractrade-docs/components/client.html"><link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
+    <link rel="canonical" href="https://fractrade-xyz.github.io/fractrade-docs/strategies/demotraderv1.html"><link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
 <link rel="icon" type="image/png" sizes="512x512" href="../img/android-chrome-512x512.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png" />
 <link rel="shortcut icon" type="image/png" sizes="48x48" href="../img/favicon.ico" />
@@ -20,7 +20,7 @@
 
     
  
-<title>Execution Client - fractrade.xyz</title>
+<title>Demo Trader V1 - fractrade.xyz</title>
 
 
 <link href="../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
@@ -220,11 +220,15 @@
             
     
         
-        <span class="
+        
+            
+            
+            <span class="
         
     
 
-    terminal-mkdocs-side-nav-item--active terminal-mkdocs-side-nav-section-no-index">Components</span>
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Components</span>
+        
     
     
         
@@ -242,37 +246,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="agent.html">Agent</a>
-        
-    
-    </li>
-            
-        
-            
-            
-
-             
-                <li class="terminal-mkdocs-side-nav-li-ul-li">
-    
-        
-        <span class="
-
-    terminal-mkdocs-side-nav-item--active">Execution Client</span>
-    
-    </li>
-            
-        
-            
-            
-
-             
-                <li class="terminal-mkdocs-side-nav-li-ul-li">
-    
-        
-        
-            <a class="
-
-    terminal-mkdocs-side-nav-item" href="strategy.html">Strategy</a>
+    terminal-mkdocs-side-nav-item" href="../components/agent.html">Agent</a>
         
     
     </li>
@@ -288,7 +262,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="publisher.html">Publisher</a>
+    terminal-mkdocs-side-nav-item" href="../components/client.html">Execution Client</a>
         
     
     </li>
@@ -304,7 +278,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="hyperliquid_sdk.html">Hyperliquid SDK</a>
+    terminal-mkdocs-side-nav-item" href="../components/strategy.html">Strategy</a>
         
     
     </li>
@@ -320,7 +294,39 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="telegram_bot.html">Telegram Bot</a>
+    terminal-mkdocs-side-nav-item" href="../components/publisher.html">Publisher</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../components/hyperliquid_sdk.html">Hyperliquid SDK</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../components/telegram_bot.html">Telegram Bot</a>
         
     
     </li>
@@ -396,15 +402,11 @@
             
     
         
-        
-            
-            
-            <span class="
+        <span class="
         
     
 
-    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Agent Strategies</span>
-        
+    terminal-mkdocs-side-nav-item--active terminal-mkdocs-side-nav-section-no-index">Agent Strategies</span>
     
     
         
@@ -419,11 +421,9 @@
                 <li class="terminal-mkdocs-side-nav-li-ul-li">
     
         
-        
-            <a class="
+        <span class="
 
-    terminal-mkdocs-side-nav-item" href="../strategies/demotraderv1.html">Demo Trader V1</a>
-        
+    terminal-mkdocs-side-nav-item--active">Demo Trader V1</span>
     
     </li>
             
@@ -438,7 +438,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="../strategies/fracsmartcopyv1.html">FRAC Smart Copy V1</a>
+    terminal-mkdocs-side-nav-item" href="fracsmartcopyv1.html">FRAC Smart Copy V1</a>
         
     
     </li>
@@ -530,115 +530,18 @@
 </nav><hr>
 <nav>
     <ul>
-        <li><a href="#fractrade-executionclient">Fractrade ExecutionClient</a></li>
-        <li><a href="#overview">Overview</a></li><li><a href="#action-types">Action Types</a></li><li><a href="#installation">Installation</a></li><li><a href="#configuration">Configuration</a></li><li><a href="#basic-usage">Basic Usage</a></li><li><a href="#advanced-usage">Advanced Usage</a></li><li><a href="#websocket-messages">WebSocket Messages</a></li><li><a href="#error-handling">Error Handling</a></li><li><a href="#logging">Logging</a></li>
+        <li><a href="#demo-trader-v1">Demo Trader V1</a></li>
+        <li><a href="#overview">Overview</a></li><li><a href="#setup">Setup</a></li>
     </ul>
 </nav>
 </aside>
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
-    <h1 id="fractrade-executionclient">Fractrade ExecutionClient</h1>
-<p>The ExecutionClient is a Python client that executes trading actions received via WebSocket from the Fractrade platform.</p>
+    <h1 id="demo-trader-v1">Demo Trader V1</h1>
 <h2 id="overview">Overview</h2>
-<p>The Fractrade platform (fractrade.xyz) allows you to create trading agents that generate trading actions. Each agent has a dedicated WebSocket connection that broadcasts these actions. The ExecutionClient connects to this WebSocket and executes the trading actions locally on your machine.</p>
-<h2 id="action-types">Action Types</h2>
-<p>The client handles the following action types:</p>
-<ol>
-<li><strong>EXECUTE_HYPERLIQUID_PERP_TRADE</strong>: Execute perpetual trades (open/close positions)</li>
-<li><strong>SET_HYPERLIQUID_PERP_STOP_LOSS</strong>: Set stop loss orders</li>
-<li><strong>SET_HYPERLIQUID_PERP_TAKE_PROFIT</strong>: Set take profit orders</li>
-</ol>
-<h2 id="installation">Installation</h2>
-<pre><code class="language-bash">pip install fractrade-executor
-</code></pre>
-<h2 id="configuration">Configuration</h2>
-<p>The executor requires the following environment variables:</p>
-<pre><code class="language-bash"># Required
-FRAC_WS_URL=wss://your-websocket-url
-FRAC_USER_TOKEN=your-user-token
-HYPERLIQUID_PRIVATE_KEY=your-private-key
-HYPERLIQUID_PUBLIC_ADDRESS=your-wallet-address
-
-# Optional
-LOGLEVEL=INFO  # Set to DEBUG for more detailed logs
-</code></pre>
-<h2 id="basic-usage">Basic Usage</h2>
-<pre><code class="language-python">from fractrade_executor.executor import FractradeExecutor
-
-async def main():
-    # Create and start the executor
-    executor = FractradeExecutor()
-
-    try:
-        await executor.start()
-        print(&quot;Executor running. Press Ctrl+C to stop.&quot;)
-
-        # Wait for shutdown event
-        await executor._shutdown_event.wait()
-
-    except KeyboardInterrupt:
-        print(&quot;Shutting down...&quot;)
-    finally:
-        await executor.stop()
-
-if __name__ == &quot;__main__&quot;:
-    import asyncio
-    asyncio.run(main())
-</code></pre>
-<h2 id="advanced-usage">Advanced Usage</h2>
-<p>You can customize the executor by subclassing <code>FractradeExecutor</code> and overriding its methods:</p>
-<pre><code class="language-python">class CustomExecutor(FractradeExecutor):
-    async def handle_hyperliquid_perp_trade(self, config):
-        &quot;&quot;&quot;Custom trade handling logic&quot;&quot;&quot;
-        self.logger.info(&quot;Processing trade: %s&quot;, config)
-        return await super().handle_hyperliquid_perp_trade(config)
-
-    async def handle_set_hyperliquid_perp_stop_loss(self, config):
-        &quot;&quot;&quot;Custom stop loss handling logic&quot;&quot;&quot;
-        self.logger.info(&quot;Setting stop loss: %s&quot;, config)
-        return await super().handle_set_hyperliquid_perp_stop_loss(config)
-
-    async def handle_set_hyperliquid_perp_take_profit(self, config):
-        &quot;&quot;&quot;Custom take profit handling logic&quot;&quot;&quot;
-        self.logger.info(&quot;Setting take profit: %s&quot;, config)
-        return await super().handle_set_hyperliquid_perp_take_profit(config)
-</code></pre>
-<h2 id="websocket-messages">WebSocket Messages</h2>
-<p>The executor receives WebSocket messages in the following format:</p>
-<pre><code class="language-json">{
-    &quot;type&quot;: &quot;ACTION&quot;,
-    &quot;data&quot;: {
-        &quot;action_id&quot;: &quot;execute_hyperliquid_perp_trade&quot;,
-        &quot;config&quot;: {
-            &quot;position&quot;: {
-                &quot;symbol&quot;: &quot;BTC&quot;,
-                &quot;size&quot;: &quot;0.01&quot;,
-                &quot;side&quot;: &quot;BUY&quot;,
-                &quot;reduce_only&quot;: false
-            },
-            &quot;metadata&quot;: {
-                &quot;event_id&quot;: &quot;...&quot;,
-                &quot;price&quot;: 50000.0,
-                &quot;leverage&quot;: 10
-            }
-        }
-    }
-}
-</code></pre>
-<h2 id="error-handling">Error Handling</h2>
-<p>The executor includes comprehensive error handling and logging:</p>
-<ul>
-<li>Connection errors are automatically retried</li>
-<li>Trade execution errors are logged with details</li>
-<li>Invalid messages are logged and skipped</li>
-<li>Graceful shutdown on interruption</li>
-</ul>
-<h2 id="logging">Logging</h2>
-<p>The executor uses Python's standard logging module. Set the <code>LOGLEVEL</code> environment variable to control log output:</p>
-<pre><code class="language-bash">LOGLEVEL=DEBUG  # For detailed debugging
-LOGLEVEL=INFO   # For normal operation
-LOGLEVEL=WARNING  # For minimal output
-</code></pre>
+<p>The Demo Trader V1 is a simple demo trading agent that trades BTC-PERPS on Hyperliquid. It is a generic strategy that trades on Hyperliquid. The idea is just to generate some random trading signals to test the platform, the agents and the telegram notifications.</p>
+<h2 id="setup">Setup</h2>
+<p>To use the strategy, you need to create a new agent and select the <code>Demo Trader V1</code> strategy. You can then see the signals in the UI, on the Websockets and can subscribe to them with the Telegram Bot.</p>
 </section>
 
             </main>

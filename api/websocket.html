@@ -10,7 +10,7 @@
     <meta name="description" content="Documentation for the fractrade.xyz platform."> 
      
     
-    <link rel="canonical" href="https://fractrade-xyz.github.io/fractrade-docs/components/client.html"><link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
+    <link rel="canonical" href="https://fractrade-xyz.github.io/fractrade-docs/api/websocket.html"><link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
 <link rel="icon" type="image/png" sizes="512x512" href="../img/android-chrome-512x512.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png" />
 <link rel="shortcut icon" type="image/png" sizes="48x48" href="../img/favicon.ico" />
@@ -20,7 +20,7 @@
 
     
  
-<title>Execution Client - fractrade.xyz</title>
+<title>Websocket API - fractrade.xyz</title>
 
 
 <link href="../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
@@ -220,11 +220,15 @@
             
     
         
-        <span class="
+        
+            
+            
+            <span class="
         
     
 
-    terminal-mkdocs-side-nav-item--active terminal-mkdocs-side-nav-section-no-index">Components</span>
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Components</span>
+        
     
     
         
@@ -242,37 +246,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="agent.html">Agent</a>
-        
-    
-    </li>
-            
-        
-            
-            
-
-             
-                <li class="terminal-mkdocs-side-nav-li-ul-li">
-    
-        
-        <span class="
-
-    terminal-mkdocs-side-nav-item--active">Execution Client</span>
-    
-    </li>
-            
-        
-            
-            
-
-             
-                <li class="terminal-mkdocs-side-nav-li-ul-li">
-    
-        
-        
-            <a class="
-
-    terminal-mkdocs-side-nav-item" href="strategy.html">Strategy</a>
+    terminal-mkdocs-side-nav-item" href="../components/agent.html">Agent</a>
         
     
     </li>
@@ -288,7 +262,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="publisher.html">Publisher</a>
+    terminal-mkdocs-side-nav-item" href="../components/client.html">Execution Client</a>
         
     
     </li>
@@ -304,7 +278,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="hyperliquid_sdk.html">Hyperliquid SDK</a>
+    terminal-mkdocs-side-nav-item" href="../components/strategy.html">Strategy</a>
         
     
     </li>
@@ -320,7 +294,39 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="telegram_bot.html">Telegram Bot</a>
+    terminal-mkdocs-side-nav-item" href="../components/publisher.html">Publisher</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../components/hyperliquid_sdk.html">Hyperliquid SDK</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../components/telegram_bot.html">Telegram Bot</a>
         
     
     </li>
@@ -345,15 +351,11 @@
             
     
         
-        
-            
-            
-            <span class="
+        <span class="
         
     
 
-    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">API Reference</span>
-        
+    terminal-mkdocs-side-nav-item--active terminal-mkdocs-side-nav-section-no-index">API Reference</span>
     
     
         
@@ -368,11 +370,9 @@
                 <li class="terminal-mkdocs-side-nav-li-ul-li">
     
         
-        
-            <a class="
+        <span class="
 
-    terminal-mkdocs-side-nav-item" href="../api/websocket.html">Websocket API</a>
-        
+    terminal-mkdocs-side-nav-item--active">Websocket API</span>
     
     </li>
             
@@ -530,115 +530,208 @@
 </nav><hr>
 <nav>
     <ul>
-        <li><a href="#fractrade-executionclient">Fractrade ExecutionClient</a></li>
-        <li><a href="#overview">Overview</a></li><li><a href="#action-types">Action Types</a></li><li><a href="#installation">Installation</a></li><li><a href="#configuration">Configuration</a></li><li><a href="#basic-usage">Basic Usage</a></li><li><a href="#advanced-usage">Advanced Usage</a></li><li><a href="#websocket-messages">WebSocket Messages</a></li><li><a href="#error-handling">Error Handling</a></li><li><a href="#logging">Logging</a></li>
+        <li><a href="#websocket-api">Websocket API</a></li>
+        <li><a href="#action-websocket">Action Websocket</a></li><li><a href="#user-channel-websocket">User Channel Websocket</a></li><li><a href="#rate-limits">Rate Limits</a></li><li><a href="#error-codes">Error Codes</a></li>
     </ul>
 </nav>
 </aside>
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
-    <h1 id="fractrade-executionclient">Fractrade ExecutionClient</h1>
-<p>The ExecutionClient is a Python client that executes trading actions received via WebSocket from the Fractrade platform.</p>
-<h2 id="overview">Overview</h2>
-<p>The Fractrade platform (fractrade.xyz) allows you to create trading agents that generate trading actions. Each agent has a dedicated WebSocket connection that broadcasts these actions. The ExecutionClient connects to this WebSocket and executes the trading actions locally on your machine.</p>
-<h2 id="action-types">Action Types</h2>
-<p>The client handles the following action types:</p>
-<ol>
-<li><strong>EXECUTE_HYPERLIQUID_PERP_TRADE</strong>: Execute perpetual trades (open/close positions)</li>
-<li><strong>SET_HYPERLIQUID_PERP_STOP_LOSS</strong>: Set stop loss orders</li>
-<li><strong>SET_HYPERLIQUID_PERP_TAKE_PROFIT</strong>: Set take profit orders</li>
-</ol>
-<h2 id="installation">Installation</h2>
-<pre><code class="language-bash">pip install fractrade-executor
+    <h1 id="websocket-api">Websocket API</h1>
+<p>The Fractrade platform provides websocket endpoints for real-time data and action streaming.</p>
+<h2 id="action-websocket">Action Websocket</h2>
+<p>The Action Websocket allows you to receive real-time actions from your agents.</p>
+<h3 id="endpoint">Endpoint</h3>
+<pre><code>wss://api.fractrade.xyz/ws/actions/{agent_id}
 </code></pre>
-<h2 id="configuration">Configuration</h2>
-<p>The executor requires the following environment variables:</p>
-<pre><code class="language-bash"># Required
-FRAC_WS_URL=wss://your-websocket-url
-FRAC_USER_TOKEN=your-user-token
-HYPERLIQUID_PRIVATE_KEY=your-private-key
-HYPERLIQUID_PUBLIC_ADDRESS=your-wallet-address
-
-# Optional
-LOGLEVEL=INFO  # Set to DEBUG for more detailed logs
+<h3 id="authentication">Authentication</h3>
+<p>Authentication is required to connect to the websocket. You can authenticate using your API key and secret:</p>
+<pre><code>wss://api.fractrade.xyz/ws/actions/{agent_id}?api_key={api_key}&amp;api_secret={api_secret}
 </code></pre>
-<h2 id="basic-usage">Basic Usage</h2>
-<pre><code class="language-python">from fractrade_executor.executor import FractradeExecutor
-
-async def main():
-    # Create and start the executor
-    executor = FractradeExecutor()
-
-    try:
-        await executor.start()
-        print(&quot;Executor running. Press Ctrl+C to stop.&quot;)
-
-        # Wait for shutdown event
-        await executor._shutdown_event.wait()
-
-    except KeyboardInterrupt:
-        print(&quot;Shutting down...&quot;)
-    finally:
-        await executor.stop()
-
-if __name__ == &quot;__main__&quot;:
-    import asyncio
-    asyncio.run(main())
-</code></pre>
-<h2 id="advanced-usage">Advanced Usage</h2>
-<p>You can customize the executor by subclassing <code>FractradeExecutor</code> and overriding its methods:</p>
-<pre><code class="language-python">class CustomExecutor(FractradeExecutor):
-    async def handle_hyperliquid_perp_trade(self, config):
-        &quot;&quot;&quot;Custom trade handling logic&quot;&quot;&quot;
-        self.logger.info(&quot;Processing trade: %s&quot;, config)
-        return await super().handle_hyperliquid_perp_trade(config)
-
-    async def handle_set_hyperliquid_perp_stop_loss(self, config):
-        &quot;&quot;&quot;Custom stop loss handling logic&quot;&quot;&quot;
-        self.logger.info(&quot;Setting stop loss: %s&quot;, config)
-        return await super().handle_set_hyperliquid_perp_stop_loss(config)
-
-    async def handle_set_hyperliquid_perp_take_profit(self, config):
-        &quot;&quot;&quot;Custom take profit handling logic&quot;&quot;&quot;
-        self.logger.info(&quot;Setting take profit: %s&quot;, config)
-        return await super().handle_set_hyperliquid_perp_take_profit(config)
-</code></pre>
-<h2 id="websocket-messages">WebSocket Messages</h2>
-<p>The executor receives WebSocket messages in the following format:</p>
+<h3 id="message-format">Message Format</h3>
+<p>Messages are sent in JSON format. Each message contains an action object:</p>
 <pre><code class="language-json">{
-    &quot;type&quot;: &quot;ACTION&quot;,
-    &quot;data&quot;: {
-        &quot;action_id&quot;: &quot;execute_hyperliquid_perp_trade&quot;,
-        &quot;config&quot;: {
-            &quot;position&quot;: {
-                &quot;symbol&quot;: &quot;BTC&quot;,
-                &quot;size&quot;: &quot;0.01&quot;,
-                &quot;side&quot;: &quot;BUY&quot;,
-                &quot;reduce_only&quot;: false
-            },
-            &quot;metadata&quot;: {
-                &quot;event_id&quot;: &quot;...&quot;,
-                &quot;price&quot;: 50000.0,
-                &quot;leverage&quot;: 10
-            }
-        }
+  &quot;action_id&quot;: &quot;action-uuid&quot;,
+  &quot;action_type&quot;: &quot;EXECUTE_HYPERLIQUID_PERP_TRADE&quot;,
+  &quot;agent_id&quot;: &quot;agent-uuid&quot;,
+  &quot;config&quot;: {
+    &quot;position&quot;: {
+      &quot;asset&quot;: &quot;BTC&quot;,
+      &quot;size&quot;: 0.1,
+      &quot;side&quot;: &quot;LONG&quot;,
+      &quot;leverage&quot;: 10,
+      &quot;exchange&quot;: &quot;hyperliquid&quot;
     }
+  },
+  &quot;created_at&quot;: &quot;2023-01-01T00:00:00Z&quot;,
+  &quot;status&quot;: &quot;PENDING&quot;
 }
 </code></pre>
-<h2 id="error-handling">Error Handling</h2>
-<p>The executor includes comprehensive error handling and logging:</p>
-<ul>
-<li>Connection errors are automatically retried</li>
-<li>Trade execution errors are logged with details</li>
-<li>Invalid messages are logged and skipped</li>
-<li>Graceful shutdown on interruption</li>
-</ul>
-<h2 id="logging">Logging</h2>
-<p>The executor uses Python's standard logging module. Set the <code>LOGLEVEL</code> environment variable to control log output:</p>
-<pre><code class="language-bash">LOGLEVEL=DEBUG  # For detailed debugging
-LOGLEVEL=INFO   # For normal operation
-LOGLEVEL=WARNING  # For minimal output
+<h3 id="action-types">Action Types</h3>
+<p>The following action types are published to the websocket:</p>
+<table>
+<thead>
+<tr>
+<th>Action Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EXECUTE_HYPERLIQUID_PERP_TRADE</code></td>
+<td>Execute a trade on Hyperliquid</td>
+</tr>
+<tr>
+<td><code>SET_HYPERLIQUID_PERP_STOP_LOSS</code></td>
+<td>Set a stop loss on Hyperliquid</td>
+</tr>
+<tr>
+<td><code>SET_HYPERLIQUID_PERP_TAKE_PROFIT</code></td>
+<td>Set a take profit on Hyperliquid</td>
+</tr>
+</tbody>
+</table>
+<p>Note: <code>SEND_TELEGRAM</code> actions are not published to the websocket as they are only used internally for sending notifications to Telegram.</p>
+<h3 id="example-connecting-with-python">Example: Connecting with Python</h3>
+<pre><code class="language-python">import websocket
+import json
+import threading
+import rel
+
+def on_message(ws, message):
+    action = json.loads(message)
+    print(f&quot;Received action: {action}&quot;)
+
+    # Process the action
+    action_type = action['action_type']
+    config = action['config']
+
+    if action_type == 'EXECUTE_HYPERLIQUID_PERP_TRADE':
+        # Handle trade execution
+        position = config['position']
+        print(f&quot;Trade signal: {position}&quot;)
+
+        # Execute the trade using your own logic
+        # ...
+
+def on_error(ws, error):
+    print(f&quot;Error: {error}&quot;)
+
+def on_close(ws, close_status_code, close_msg):
+    print(f&quot;Connection closed: {close_msg}&quot;)
+
+def on_open(ws):
+    print(&quot;Connection opened&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    # Replace with your actual values
+    agent_id = &quot;your-agent-id&quot;
+    api_key = &quot;your-api-key&quot;
+    api_secret = &quot;your-api-secret&quot;
+
+    # Create websocket connection
+    ws_url = f&quot;wss://api.fractrade.xyz/ws/actions/{agent_id}?api_key={api_key}&amp;api_secret={api_secret}&quot;
+
+    ws = websocket.WebSocketApp(
+        ws_url,
+        on_open=on_open,
+        on_message=on_message,
+        on_error=on_error,
+        on_close=on_close
+    )
+
+    # Set dispatcher to automatic reconnection
+    ws.run_forever(dispatcher=rel)
+    rel.signal(2, rel.abort)  # Keyboard Interrupt
+    rel.dispatch()
 </code></pre>
+<h3 id="example-connecting-with-javascript">Example: Connecting with JavaScript</h3>
+<pre><code class="language-javascript">const WebSocket = require('ws');
+
+// Replace with your actual values
+const agentId = 'your-agent-id';
+const apiKey = 'your-api-key';
+const apiSecret = 'your-api-secret';
+
+// Create websocket connection
+const wsUrl = `wss://api.fractrade.xyz/ws/actions/${agentId}?api_key=${apiKey}&amp;api_secret=${apiSecret}`;
+const ws = new WebSocket(wsUrl);
+
+ws.on('open', function open() {
+  console.log('Connection opened');
+});
+
+ws.on('message', function incoming(data) {
+  const action = JSON.parse(data);
+  console.log('Received action:', action);
+
+  // Process the action
+  const actionType = action.action_type;
+  const config = action.config;
+
+  if (actionType === 'EXECUTE_HYPERLIQUID_PERP_TRADE') {
+    // Handle trade execution
+    const position = config.position;
+    console.log('Trade signal:', position);
+
+    // Execute the trade using your own logic
+    // ...
+  }
+});
+
+ws.on('error', function error(err) {
+  console.log('Error:', err);
+});
+
+ws.on('close', function close() {
+  console.log('Connection closed');
+});
+</code></pre>
+<h2 id="user-channel-websocket">User Channel Websocket</h2>
+<p>For users who want to receive actions from all their agents, you can connect to the user channel websocket:</p>
+<pre><code>wss://api.fractrade.xyz/ws/user/{user_id}
+</code></pre>
+<p>This endpoint requires user authentication and will stream all actions from all agents owned by the user.</p>
+<h2 id="rate-limits">Rate Limits</h2>
+<ul>
+<li>Maximum 10 concurrent connections per user</li>
+<li>Maximum 100 messages per minute per connection</li>
+</ul>
+<h2 id="error-codes">Error Codes</h2>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1000</td>
+<td>Normal closure</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>Going away</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>Protocol error</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>Unsupported data</td>
+</tr>
+<tr>
+<td>1008</td>
+<td>Policy violation</td>
+</tr>
+<tr>
+<td>1011</td>
+<td>Internal server error</td>
+</tr>
+</tbody>
+</table>
 </section>
 
             </main>

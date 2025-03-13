@@ -10,7 +10,7 @@
     <meta name="description" content="Documentation for the fractrade.xyz platform."> 
      
     
-    <link rel="canonical" href="https://fractrade-xyz.github.io/fractrade-docs/components/client.html"><link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
+    <link rel="canonical" href="https://fractrade-xyz.github.io/fractrade-docs/components/agent.html"><link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
 <link rel="icon" type="image/png" sizes="512x512" href="../img/android-chrome-512x512.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png" />
 <link rel="shortcut icon" type="image/png" sizes="48x48" href="../img/favicon.ico" />
@@ -20,7 +20,7 @@
 
     
  
-<title>Execution Client - fractrade.xyz</title>
+<title>Agent - fractrade.xyz</title>
 
 
 <link href="../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
@@ -239,11 +239,9 @@
                 <li class="terminal-mkdocs-side-nav-li-ul-li">
     
         
-        
-            <a class="
+        <span class="
 
-    terminal-mkdocs-side-nav-item" href="agent.html">Agent</a>
-        
+    terminal-mkdocs-side-nav-item--active">Agent</span>
     
     </li>
             
@@ -255,9 +253,11 @@
                 <li class="terminal-mkdocs-side-nav-li-ul-li">
     
         
-        <span class="
+        
+            <a class="
 
-    terminal-mkdocs-side-nav-item--active">Execution Client</span>
+    terminal-mkdocs-side-nav-item" href="client.html">Execution Client</a>
+        
     
     </li>
             
@@ -530,115 +530,163 @@
 </nav><hr>
 <nav>
     <ul>
-        <li><a href="#fractrade-executionclient">Fractrade ExecutionClient</a></li>
-        <li><a href="#overview">Overview</a></li><li><a href="#action-types">Action Types</a></li><li><a href="#installation">Installation</a></li><li><a href="#configuration">Configuration</a></li><li><a href="#basic-usage">Basic Usage</a></li><li><a href="#advanced-usage">Advanced Usage</a></li><li><a href="#websocket-messages">WebSocket Messages</a></li><li><a href="#error-handling">Error Handling</a></li><li><a href="#logging">Logging</a></li>
+        <li><a href="#fractrade-agent">Fractrade Agent</a></li>
+        <li><a href="#agent-types">Agent Types</a></li><li><a href="#creating-an-agent">Creating an Agent</a></li><li><a href="#deploying-an-agent">Deploying an Agent</a></li><li><a href="#agent-actions">Agent Actions</a></li><li><a href="#agent-monitoring">Agent Monitoring</a></li><li><a href="#agent-websocket">Agent WebSocket</a></li>
     </ul>
 </nav>
 </aside>
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
-    <h1 id="fractrade-executionclient">Fractrade ExecutionClient</h1>
-<p>The ExecutionClient is a Python client that executes trading actions received via WebSocket from the Fractrade platform.</p>
-<h2 id="overview">Overview</h2>
-<p>The Fractrade platform (fractrade.xyz) allows you to create trading agents that generate trading actions. Each agent has a dedicated WebSocket connection that broadcasts these actions. The ExecutionClient connects to this WebSocket and executes the trading actions locally on your machine.</p>
-<h2 id="action-types">Action Types</h2>
-<p>The client handles the following action types:</p>
+    <h1 id="fractrade-agent">Fractrade Agent</h1>
+<p>Agents are the core components of the Fractrade platform. They are responsible for executing trading strategies and generating trading actions.</p>
+<h2 id="agent-types">Agent Types</h2>
+<p>Fractrade supports two types of agents:</p>
+<h3 id="execution-agents">Execution Agents</h3>
+<p>Execution Agents have an associated execution wallet and automatically execute trades on your behalf. When an Execution Agent generates an action, the platform will:</p>
 <ol>
-<li><strong>EXECUTE_HYPERLIQUID_PERP_TRADE</strong>: Execute perpetual trades (open/close positions)</li>
+<li>Create the action in the database</li>
+<li>Publish the action to the websocket</li>
+<li>Execute the action using the agent's execution wallet</li>
+</ol>
+<p>Execution Agents are ideal for fully automated trading strategies where you want trades to be executed without manual intervention.</p>
+<h3 id="server-execution">Server Execution</h3>
+<p>When an agent is configured with an execution wallet, it can execute trades in two ways:</p>
+<ol>
+<li><strong>Server Execution</strong> (<code>server_execution=true</code>): The trade is executed by the server using the agent's execution wallet</li>
+<li><strong>Client Execution</strong> (<code>server_execution=false</code>): The trade is executed by the ExecutionClient running on your machine</li>
+</ol>
+<p>This flexibility allows you to:
+- Run strategies fully on the server
+- Execute trades from your own infrastructure
+- Implement custom execution logic
+- Maintain control over your private keys</p>
+<h2 id="creating-an-agent">Creating an Agent</h2>
+<p>To create an agent, you need to:</p>
+<ol>
+<li>Define your agent's configuration</li>
+<li>Implement your agent's logic</li>
+<li>Deploy your agent to the Fractrade platform</li>
+</ol>
+<h3 id="agent-configuration">Agent Configuration</h3>
+<p>The agent configuration defines the agent's parameters and settings. Here's an example configuration:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;Simple Moving Average Crossover&quot;,
+  &quot;description&quot;: &quot;A simple moving average crossover strategy&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;config&quot;: {
+    &quot;fast_period&quot;: 10,
+    &quot;slow_period&quot;: 20,
+    &quot;symbol&quot;: &quot;BTC&quot;,
+    &quot;size&quot;: 0.01,
+    &quot;leverage&quot;: 10
+  }
+}
+</code></pre>
+<h3 id="agent-logic">Agent Logic</h3>
+<p>The agent logic is implemented in Python. Here's an example of a simple moving average crossover strategy:</p>
+<pre><code class="language-python">from fractrade import Agent
+from fractrade.actions import ActionType
+
+class SimpleMovingAverageCrossover(Agent):
+    def __init__(self, config):
+        super().__init__(config)
+        self.fast_period = config['fast_period']
+        self.slow_period = config['slow_period']
+        self.symbol = config['symbol']
+        self.size = config['size']
+        self.leverage = config['leverage']
+
+    def process_event(self, event):
+        # Skip non-fill events
+        if event.event_type != 'hyperliquid_fill':
+            return []
+
+        # Extract data from event
+        fill_data = event.data
+        symbol = fill_data.get('coin')
+        executed_size = float(fill_data.get('sz'))
+        execution_price = float(fill_data.get('px'))
+
+        # Create trade action
+        action = {
+            'action_id': ActionType.EXECUTE_HYPERLIQUID_PERP_TRADE,
+            'config': {
+                'position': {
+                    'symbol': symbol,
+                    'size': str(executed_size),
+                    'side': 'BUY',
+                    'reduce_only': False
+                },
+                'metadata': {
+                    'event_id': str(event.id),
+                    'price': execution_price,
+                    'leverage': self.leverage,
+                    'server_execution': True  # Execute on server
+                }
+            }
+        }
+
+        return [action]
+</code></pre>
+<h2 id="deploying-an-agent">Deploying an Agent</h2>
+<p>To deploy an agent, you need to:</p>
+<ol>
+<li>Package your agent code</li>
+<li>Upload it to the Fractrade platform</li>
+<li>Configure your agent</li>
+</ol>
+<h3 id="packaging-your-agent">Packaging Your Agent</h3>
+<p>Your agent code should be packaged as a Python module. The module should contain:</p>
+<ul>
+<li>A main agent class that inherits from <code>fractrade.Agent</code></li>
+<li>Any dependencies required by your agent</li>
+</ul>
+<h3 id="uploading-your-agent">Uploading Your Agent</h3>
+<p>You can upload your agent using the Fractrade CLI:</p>
+<pre><code class="language-bash">fractrade agent upload --path ./my-agent
+</code></pre>
+<h3 id="configuring-your-agent">Configuring Your Agent</h3>
+<p>After uploading your agent, you need to configure it:</p>
+<ol>
+<li>Set the agent configuration</li>
+<li>Set up the execution wallet (optional)</li>
+<li>Configure server execution settings</li>
+</ol>
+<h2 id="agent-actions">Agent Actions</h2>
+<p>Agents generate actions in response to events. The supported action types are:</p>
+<ol>
+<li><strong>EXECUTE_HYPERLIQUID_PERP_TRADE</strong>: Execute perpetual trades</li>
 <li><strong>SET_HYPERLIQUID_PERP_STOP_LOSS</strong>: Set stop loss orders</li>
 <li><strong>SET_HYPERLIQUID_PERP_TAKE_PROFIT</strong>: Set take profit orders</li>
 </ol>
-<h2 id="installation">Installation</h2>
-<pre><code class="language-bash">pip install fractrade-executor
-</code></pre>
-<h2 id="configuration">Configuration</h2>
-<p>The executor requires the following environment variables:</p>
-<pre><code class="language-bash"># Required
-FRAC_WS_URL=wss://your-websocket-url
-FRAC_USER_TOKEN=your-user-token
-HYPERLIQUID_PRIVATE_KEY=your-private-key
-HYPERLIQUID_PUBLIC_ADDRESS=your-wallet-address
-
-# Optional
-LOGLEVEL=INFO  # Set to DEBUG for more detailed logs
-</code></pre>
-<h2 id="basic-usage">Basic Usage</h2>
-<pre><code class="language-python">from fractrade_executor.executor import FractradeExecutor
-
-async def main():
-    # Create and start the executor
-    executor = FractradeExecutor()
-
-    try:
-        await executor.start()
-        print(&quot;Executor running. Press Ctrl+C to stop.&quot;)
-
-        # Wait for shutdown event
-        await executor._shutdown_event.wait()
-
-    except KeyboardInterrupt:
-        print(&quot;Shutting down...&quot;)
-    finally:
-        await executor.stop()
-
-if __name__ == &quot;__main__&quot;:
-    import asyncio
-    asyncio.run(main())
-</code></pre>
-<h2 id="advanced-usage">Advanced Usage</h2>
-<p>You can customize the executor by subclassing <code>FractradeExecutor</code> and overriding its methods:</p>
-<pre><code class="language-python">class CustomExecutor(FractradeExecutor):
-    async def handle_hyperliquid_perp_trade(self, config):
-        &quot;&quot;&quot;Custom trade handling logic&quot;&quot;&quot;
-        self.logger.info(&quot;Processing trade: %s&quot;, config)
-        return await super().handle_hyperliquid_perp_trade(config)
-
-    async def handle_set_hyperliquid_perp_stop_loss(self, config):
-        &quot;&quot;&quot;Custom stop loss handling logic&quot;&quot;&quot;
-        self.logger.info(&quot;Setting stop loss: %s&quot;, config)
-        return await super().handle_set_hyperliquid_perp_stop_loss(config)
-
-    async def handle_set_hyperliquid_perp_take_profit(self, config):
-        &quot;&quot;&quot;Custom take profit handling logic&quot;&quot;&quot;
-        self.logger.info(&quot;Setting take profit: %s&quot;, config)
-        return await super().handle_set_hyperliquid_perp_take_profit(config)
-</code></pre>
-<h2 id="websocket-messages">WebSocket Messages</h2>
-<p>The executor receives WebSocket messages in the following format:</p>
-<pre><code class="language-json">{
-    &quot;type&quot;: &quot;ACTION&quot;,
-    &quot;data&quot;: {
-        &quot;action_id&quot;: &quot;execute_hyperliquid_perp_trade&quot;,
-        &quot;config&quot;: {
-            &quot;position&quot;: {
-                &quot;symbol&quot;: &quot;BTC&quot;,
-                &quot;size&quot;: &quot;0.01&quot;,
-                &quot;side&quot;: &quot;BUY&quot;,
-                &quot;reduce_only&quot;: false
-            },
-            &quot;metadata&quot;: {
-                &quot;event_id&quot;: &quot;...&quot;,
-                &quot;price&quot;: 50000.0,
-                &quot;leverage&quot;: 10
-            }
+<p>Actions are created using the <code>create_action</code> method:</p>
+<pre><code class="language-python">self.create_action(
+    action_type=ActionType.EXECUTE_HYPERLIQUID_PERP_TRADE,
+    config={
+        'position': {
+            'symbol': 'BTC',
+            'size': '0.01',
+            'side': 'BUY',
+            'reduce_only': False
+        },
+        'metadata': {
+            'price': 50000.0,
+            'leverage': 10,
+            'server_execution': True
         }
     }
-}
+)
 </code></pre>
-<h2 id="error-handling">Error Handling</h2>
-<p>The executor includes comprehensive error handling and logging:</p>
+<h2 id="agent-monitoring">Agent Monitoring</h2>
+<p>You can monitor your agents using the Fractrade dashboard. The dashboard shows:</p>
 <ul>
-<li>Connection errors are automatically retried</li>
-<li>Trade execution errors are logged with details</li>
-<li>Invalid messages are logged and skipped</li>
-<li>Graceful shutdown on interruption</li>
+<li>Agent status</li>
+<li>Agent performance</li>
+<li>Agent logs</li>
+<li>Agent actions</li>
 </ul>
-<h2 id="logging">Logging</h2>
-<p>The executor uses Python's standard logging module. Set the <code>LOGLEVEL</code> environment variable to control log output:</p>
-<pre><code class="language-bash">LOGLEVEL=DEBUG  # For detailed debugging
-LOGLEVEL=INFO   # For normal operation
-LOGLEVEL=WARNING  # For minimal output
-</code></pre>
+<h2 id="agent-websocket">Agent WebSocket</h2>
+<p>Each agent has a dedicated WebSocket endpoint that broadcasts its trading actions. You can connect to this endpoint using the ExecutionClient to execute trades locally on your machine. </p>
 </section>
 
             </main>
